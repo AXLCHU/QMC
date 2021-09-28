@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BSM.hpp" />
+    <ClInclude Include="Inverse_fcts.h" />
     <ClInclude Include="Low_discrepancy_sequences.h" />
     <ClInclude Include="Path_generation.hpp" />
     <ClInclude Include="VaR_CVaR.h" />

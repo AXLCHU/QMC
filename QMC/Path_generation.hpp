@@ -5,6 +5,7 @@
 #include <cmath>
 #include <math.h>
 #include <algorithm>
+#include "Inverse_fcts.h"
 
 // Correlated random Gaussian 
 
@@ -23,7 +24,7 @@ void GBM_paths(std::vector<double>& spot_prices,  // Vector of spot prices to be
   double vol = sqrt(v*v*dt);
 
   for (int i=1; i<spot_prices.size(); i++) {
-    double gauss_bm = gaussian_box_muller();
+    double gauss_bm = gaussian_box_muller(); //
     spot_prices[i] = spot_prices[i-1] * drift * exp(vol*gauss_bm);
   }
 }

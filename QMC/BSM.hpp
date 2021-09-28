@@ -6,6 +6,7 @@
 
 using boost::math::normal;
 
+
 double BSM_Call(double& S0, const double& r, const double& v, const double& T, const double& K) {
 
 	double d1 = (1 / v * sqrt(T)) * (log(S0 / K) + (r + v * v / 2) * T);
