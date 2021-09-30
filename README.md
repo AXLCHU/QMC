@@ -10,4 +10,4 @@
 - Add imporance sampling procedure and adaptive confidence level
 
 ### Results:
-- Variance reduction
+- Variance reduction when using quasi-random numbers vs pseudo-random numbers
