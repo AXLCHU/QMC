@@ -5,7 +5,7 @@
 #include <cmath>
 #include <math.h>
 #include <algorithm>
-#include "Inverse_fcts.h"
+#include "Sampling.h"
 
 // Correlated random Gaussian 
 

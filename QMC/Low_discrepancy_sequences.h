@@ -12,4 +12,11 @@ double Halton_seq(int index, int base) { // index & spatial dim
 	}
 	return r;
 }
+
+// Random output Halton sequence element
+double Halton() {
+	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+	std::mt19937 mt1(seed);
+	return Halton_seq(mt1(), 3);//
+}
 #pragma once
