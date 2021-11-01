@@ -27,7 +27,7 @@ using namespace std;
 int main() {
 
 	double alpha = 0.95;
-	double dim = 30000;
+	double dim = 50000;
 
 	 vector<double> MT(dim, 0);	vector<double> RN(dim, 0);
 	 vector<double> gausss(dim, 0);
@@ -56,7 +56,7 @@ int main() {
 	double std = StdDev(VaR);
 
 	cout << "\n\nPseudo-random case :";
-	cout << "\n\nVaR at " << alpha * 100 << "% = " << VaR[dim - 1]; cout << " & std dev de VaR = " << std * 100 << "%";
+	cout << "\n\nVaR at " << alpha * 100 << "% = " << VaR[dim - 1]; cout << " & std dev de VaR = " << std * 100 << "%" ;
 	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
 
 
@@ -92,7 +92,7 @@ int main() {
 	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1]; 
 	cout << " & std dev de VaR avec Box-Muller = " << std * 100 << "%";
 	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
-	
+
 //	gauss_low_discrepency(X, halton1, halton2);
 	gauss_low_discrepency(X,dim);
 	VaR_CVaR(CVaR, VaR, X, alpha);
@@ -141,7 +141,6 @@ int main() {
 
 	cout << "\n\nVaR at " << alpha * 100 << "% for Call option = " << VaR[dim - 1];
 	cout << "\nCVaR at " << alpha * 100 << "% for Call option  = " << CVaR[dim - 1];
-
 
 
 	cout << "\n";

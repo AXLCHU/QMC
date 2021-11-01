@@ -7,18 +7,10 @@
 #include <algorithm>
 #include "Sampling.h"
 
-// Correlated random Gaussian 
+// GBM model
 
+void GBM_paths(std::vector<double>& spot_prices, const double& r, const double& v, const double& T) { 
 
-
-// This provides a vector containing sampled points of a Geometric Brownian Motion stock price path
-
-void GBM_paths(std::vector<double>& spot_prices,  // Vector of spot prices to be filled in
-                           const double& r,   // Risk free interest rate (constant)
-                           const double& v,   // Volatility of underlying (constant)
-                           const double& T) { // Expiry
-
-  // Since the drift and volatility of the asset are constant we will precalculate as much as possible for maximum efficiency
   double dt = T/static_cast<double>(spot_prices.size());
   double drift = exp(dt*(r-0.5*v*v));
   double vol = sqrt(v*v*dt);
@@ -30,7 +22,7 @@ void GBM_paths(std::vector<double>& spot_prices,  // Vector of spot prices to be
 }
 
 
-// Heston model spot prices
+// Heston model
 
 void Heston_paths(std::vector<double>& spot_prices, const double& r, const double& T,
                             const double& xi, const double& kappa, const double& theta, const double& rho,

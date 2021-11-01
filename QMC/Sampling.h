@@ -27,7 +27,7 @@ void gauss2(vector<double>& X) {
 				expo1 = expo(rand1, 1);
 				expo2 = expo(rand2, 1);
 		
-					if (expo2 > pow(expo1 - 1, 2)) { // Accept
+					if (expo2 > pow(expo1 - 1, 2)) { 
 						if (rand1 <= 0.5) { X[i] = expo1; }
 						else { X[i] = -expo1; }
 						cond = true;
@@ -38,63 +38,37 @@ void gauss2(vector<double>& X) {
 }
 
 
-
-/*
-void gauss_low_discrepency(vector<double>& X, vector<double>& rand1, vector<double>& rand2) {
-
-	double expo1 = 0; double expo2 = 0;
-	bool cond = true;
-
-		for (int i = 0; i < X.size(); i++) {
-			do {
-				rand1[i] = Halton_seq(i, 2);
-				rand2[i] = Halton_seq(i, 3);
-
-				for (int j = i; j < rand1.size(); j++) { //
-
-					expo1 = expo(rand1[j], 1); // size RN > size X
-					expo2 = expo(rand2[j], 1);
-
-					if (expo2 > pow(expo1 - 1, 2)) {
-						if (rand1[j] <= 0.5) { X[i] = expo1; }
-						else { X[i] = -expo1; }
-						cond = true;
-					} 
-					else { cond = false; j += 1; } //
-				}
-			} while (cond == false);
-		}
-}*/
-
+// Generate gaussian distrib via Halton sequence
 
 void gauss_low_discrepency(vector<double>& X, double& dim) {
-
-	vector<double> rand1(dim,0); vector<double> rand2(dim, 0);
+	double rand1 = 0; double rand2 = 0;
 	double expo1 = 0; double expo2 = 0;
 	bool cond = true;
 
-	for (int i = 0; i < X.size(); i++) {
+	unsigned seed = 1234;
+	std::mt19937 mt1(seed);
 
-		rand1[i] = Halton(); //
-		rand2[i] = Halton(); 
+	do {
 
-		expo1 = expo(rand1[i], 1); // size RN > size X
-		expo2 = expo(rand2[i], 1);
+		for (int i = 0; i < X.size(); i++) {
 
-		if (expo2 > pow(expo1 - 1, 2)) {
-			if (rand1[i] <= 0.5) { 
-				X[i] = expo1; 
+			int MT1 = mt1(); int MTT1 = abs(MT1);
+			int MT2 = mt1(); int MTT2 = abs(MT2);
+
+			rand1 = Halton_seq(MTT1, 3);
+			rand2 = Halton_seq(MTT2, 3);
+
+			expo1 = expo(rand1, 1); // size RN > size X
+			expo2 = expo(rand2, 1);
+
+			if (expo2 > pow(expo1 - 1, 2)) { // Accept
+				if (rand1 <= 0.5) { X[i] = expo1; }
+				else { X[i] = -expo1; }
+				cond = true;
 			}
-			else { 
-				X[i] = -expo1; 
-			}
-			cond = true;
+			else { cond = false; i -= 1; }
 		}
-		else { 
-			cond = false; 
-		}	// take next Halton nbr index j for same i
-
-	}
+	} while (cond == false);
 }
 
 
