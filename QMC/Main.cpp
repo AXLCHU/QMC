@@ -45,7 +45,6 @@ int main() {
 	boost::math::normal dist(0, 1);
 
 	double q = quantile(dist, alpha);
-//	double q1 = quantile(dist, 1 - alpha);
 	double qq = (1 / (1 - alpha)) * ((1 / sqrt(2 * M_PI)) * exp(-q * q * 0.5));
 
 	cout << "\nSND quantile at " << alpha * 100 << "% = " << q;
@@ -67,23 +66,15 @@ int main() {
 		halton1[i] = Halton_seq(i + 1, 2);
 		halton2[i] = Halton_seq(i + 1, 3);
 
-		//std::random_device seed; // uniformly-distributed integer random number generator
-		//std::mt19937 gen{ seed() };
 		unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 		std::mt19937 mt1(seed);
 		MT[i] = mt1();
 		RN[i] = mt1() / static_cast<double>(mt1.max()); 
 
-//		X[i] = gauss(halton1[i]);
-//		X1[i] = gauss(RN[i]);
-
 		unsigned seed1 = chrono::system_clock::now().time_since_epoch().count();
-		default_random_engine generator(seed1); // linear congruential engine
+//		default_random_engine generator(seed1); // linear congruential engine
 //		mersenne_twister_engine mt_engine(123);
-		Y[i] = normal(generator);
-
-//		Y1[i] = unif(generator);
-//		Y2[i] = gauss(Y1[i]);
+//		Y[i] = normal(generator);
 	}
 
 	VaR_CVaR(CVaR, VaR, Z, alpha);
