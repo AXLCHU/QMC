@@ -84,7 +84,6 @@ int main() {
 	cout << " & std dev de VaR avec Box-Muller = " << std * 100 << "%";
 	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
 
-//	gauss_low_discrepency(X, halton1, halton2);
 	gauss_low_discrepency(X,dim);
 	VaR_CVaR(CVaR, VaR, X, alpha);
 	std = StdDev(VaR);
@@ -98,6 +97,7 @@ int main() {
 	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1] << " & std dev de VaR avec MT = " << std * 100 << "%";
 	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
 	*/
+
 
 	double S0 = 90;
 	double K = 110;
