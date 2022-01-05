@@ -16,4 +16,6 @@ double Halton_seq(int index, int base) { // index & spatial dim
 
 
 // + Sobol, Faure, Hammersley
+
+
 #pragma once

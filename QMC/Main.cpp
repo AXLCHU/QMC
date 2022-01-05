@@ -1,33 +1,33 @@
-#include<stdlib.h>
-#include<iostream>
-#include<cstdlib>
-#include<cstdio>
+#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
 #include <string>
-#include<cmath>
-#include<climits>
-#include<list>
-#include<algorithm>
-#include<numeric>
-#include<vector>
-#include<iostream>
-#include<random>
-#include<chrono>
+#include <cmath>
+#include <climits>
+#include <list>
+#include <algorithm>
+#include <numeric>
+#include <vector>
+#include <random>
+#include <chrono>
 #include "VaR_CVaR.h"
 #include "BSM.hpp"
 #include "Path_generation.hpp"
 #include "Low_discrepancy_sequences.h"
 #include "Sampling.h"
-#include <boost/random/sobol.hpp>
 #include "MeanVariance.h"
+#include <boost/random/sobol.hpp>
 #include <boost/math/distributions/normal.hpp>
+#include <boost/math/distributions/inverse_gaussian.hpp>
 
 using namespace std;
 
 
 int main() {
 
-	double alpha = 0.95;
-	double dim = 50000;
+	double alpha = 0.99;
+	double dim = 10000;
 
 	 vector<double> MT(dim, 0);	vector<double> RN(dim, 0);
 	 vector<double> gausss(dim, 0);
@@ -40,7 +40,7 @@ int main() {
 	 vector<double> VaR(dim, 10); // initial value
 	 vector<double> CVaR(dim, 10);
 
-	std::normal_distribution<double> normal{ 0, 1 }; //
+
 	//std::uniform_real_distribution<double> unif(0,1);
 	boost::math::normal dist(0, 1);
 
@@ -52,11 +52,15 @@ int main() {
 
 	gauss2(X1);
 	VaR_CVaR(CVaR, VaR, X1, alpha);
-	double std = StdDev(VaR);
+	double std_VaR = StdDev(VaR);
+	double std_CVaR = StdDev(CVaR);
 
 	cout << "\n\nPseudo-random case :";
-	cout << "\n\nVaR at " << alpha * 100 << "% = " << VaR[dim - 1]; cout << " & std dev de VaR = " << std * 100 << "%" ;
-	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
+	cout << "\n\nRejection method:";
+	cout << "\n\nVaR at " << alpha * 100 << "% = " << VaR[dim - 1]; cout << " & std dev de VaR = " << std_VaR * 100 << "%" ;
+	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1]; cout << " & std dev de CVaR = " << std_CVaR * 100 << "%";
+	cout << "\n\nErrror for VaR = " << q - VaR[dim - 1];
+	cout << "\nErrror for VaR = " << qq - CVaR[dim - 1];
 
 
 	for (int i = 0; i < dim; i++) {
@@ -66,31 +70,54 @@ int main() {
 		halton1[i] = Halton_seq(i + 1, 2);
 		halton2[i] = Halton_seq(i + 1, 3);
 
+		//boost::math::inverse_gaussian my_gauss(0,1);
+
 		unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 		std::mt19937 mt1(seed);
+
 		MT[i] = mt1();
 		RN[i] = mt1() / static_cast<double>(mt1.max()); 
 
-		unsigned seed1 = chrono::system_clock::now().time_since_epoch().count();
-//		default_random_engine generator(seed1); // linear congruential engine
-//		mersenne_twister_engine mt_engine(123);
-//		Y[i] = normal(generator);
+		default_random_engine generator(seed); // linear congruential engine
+		//mersenne_twister_engine mt_engine(seed);
+
+		std::normal_distribution<double> normal(0.0, 1.0);
+
+		Y[i] = normal(generator);
+//		Y[i] = normal(mt1);
 	}
 
+	VaR_CVaR(CVaR, VaR, Y, alpha);
+	std_VaR = StdDev(VaR);
+	std_CVaR = StdDev(CVaR);
+
+	cout << "\n\nMT19937: ";
+	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1] << " & std dev de VaR = " << std_VaR * 100 << "%";
+	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1] << " & std dev de CVaR = " << std_CVaR * 100 << "%";
+	cout << "\n\nErrror for VaR = " << q - VaR[dim - 1];
+	cout << "\nErrror for VaR = " << qq - CVaR[dim - 1];
+
 	VaR_CVaR(CVaR, VaR, Z, alpha);
-	std = StdDev(VaR);
+	std_VaR = StdDev(VaR);
+	std_CVaR = StdDev(CVaR);
 	
-	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1]; 
-	cout << " & std dev de VaR avec Box-Muller = " << std * 100 << "%";
-	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
+	cout << "\n\nBox-Muller: ";
+	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1] << " & std dev de VaR = " << std_VaR * 100 << "%";
+	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1] << " & std dev de CVaR = " << std_CVaR * 100 << "%";
+	cout << "\n\nErrror for VaR = " << q - VaR[dim - 1];
+	cout << "\nErrror for VaR = " << qq - CVaR[dim - 1];
 
 	gauss_low_discrepency(X,dim);
 	VaR_CVaR(CVaR, VaR, X, alpha);
-	std = StdDev(VaR);
+	std_VaR = StdDev(VaR);
+	std_CVaR = StdDev(CVaR);
 
-	cout << "\n\nQuasi-random case:";
-	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1] << " & std dev de VaR avec Halton = " << std * 100 << "%";
-	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
+	cout << "\n\n\nQuasi-random case:";
+	cout << "\n\nStandard Gaussian VaR at " << alpha * 100 << "% = " << VaR[dim - 1] << " & std dev de VaR avec Halton = " << std_VaR * 100 << "%";
+	cout << "\nStandard Gaussian CVaR at " << alpha * 100 << "% = " << CVaR[dim - 1] << " & std dev de CVaR avec Halton = " << std_CVaR * 100 << "%";
+	cout << "\n\nErrror for VaR = " << q - VaR[dim - 1];
+	cout << "\nErrror for VaR = " << qq - CVaR[dim - 1];
+	cout << "\n\n";
 
 	/*
 	VaR_CVaR(CVaR, VaR, X, alpha);
@@ -98,7 +125,7 @@ int main() {
 	cout << "\nCVaR at " << alpha * 100 << "% = " << CVaR[dim - 1];
 	*/
 
-
+/*
 	double S0 = 90;
 	double K = 110;
 	double r = 0.05;
@@ -133,9 +160,8 @@ int main() {
 	cout << "\n\nVaR at " << alpha * 100 << "% for Call option = " << VaR[dim - 1];
 	cout << "\nCVaR at " << alpha * 100 << "% for Call option  = " << CVaR[dim - 1];
 
-
 	cout << "\n";
-
+*/
 	return 0;
 }
 

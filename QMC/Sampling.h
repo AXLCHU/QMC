@@ -6,13 +6,30 @@
 #include <algorithm>
 #include "Low_discrepancy_sequences.h"
 
+
 double expo(double rand, double lambda) {
 	double X = -log(rand) / lambda;
 	return X;
 }
 
-// Acceptance-rejection method to generate SND
+//Box-Müller
+double gaussian_box_muller() {
+	double x = 0.0;
+	double y = 0.0;
+	double euclid_sq = 0.0;
 
+	do {
+		x = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
+		y = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
+		euclid_sq = x * x + y * y;
+	} 
+	while (euclid_sq >= 1.0);
+
+	return x * sqrt(-2 * log(euclid_sq) / euclid_sq);
+}
+
+
+// Acceptance-rejection method to generate SND
 void gauss2(vector<double>& X) {
 
 	double rand1 = 0; double rand2 = 0;
@@ -76,20 +93,7 @@ void gauss_low_discrepency(vector<double>& X, double& dim) {
 //Ziggurat
 
 
-//Box-Mûller
 
-double gaussian_box_muller() {
-	double x = 0.0;
-	double y = 0.0;
-	double euclid_sq = 0.0;
-
-	do {
-		x = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
-		y = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
-		euclid_sq = x * x + y * y;
-	} while (euclid_sq >= 1.0);
-
-	return x * sqrt(-2 * log(euclid_sq) / euclid_sq);
-}
+//Marsaglia polar 
 
 #pragma once
