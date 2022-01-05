@@ -11,5 +11,5 @@
 
 ### Results:
 - Better coverage for QRNG vs PRNG
-- Variance reduction when using QRNG vs PRNG
+- Variance reduction when using QRNG vs PRNG - depends on the sampling method
 - Variance reduction when adding Importance Sampling procedure
