@@ -15,6 +15,9 @@
 
 ### Example:
 
+# Stochastic algorithm : normal vs Importance Sampling and adaptative confidence level
+## - Compute estimate of the optimal IS parameters with N/100 (M=100000) using a stepwise constant confidence level
+## - Estimate VaR & CVaR with those paramters with M iterations
 
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150955943-eef14992-2d68-4e1d-9c53-cb2fc3b20d3d.PNG)
 
