@@ -211,7 +211,7 @@ int main() {
 	vector<double> theta2(dim2, 0);
 	vector<double> mu2(dim2, 0);
 	vector<double> VaaR(dim);
-	vector<double> CVaaR(dim, 0);
+	vector<double> CVaaR(dim, 0); 
 
 	VaR_CVaR_final_procedure(CVaaR, VaaR, VaR2, theta2, mu2, loss_fct, alpha);
 
