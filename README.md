@@ -21,10 +21,10 @@
 
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150955943-eef14992-2d68-4e1d-9c53-cb2fc3b20d3d.PNG)
 
-#
+## Calculation for a 1 Put option portfolio
 
 ![QMC_VaR_3](https://user-images.githubusercontent.com/56386159/150955969-1aaf15e6-ce89-450e-84da-17f4557202ee.PNG)
 
-#
+## Variance reduction for IS procedure
 
 ![QMC_VaR_4](https://user-images.githubusercontent.com/56386159/150955987-9eacbcba-af3c-4c61-9538-2f87f913871f.PNG)
