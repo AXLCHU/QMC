@@ -24,7 +24,7 @@
 
 ### Use of randomized Halton & Sobol sequences vs MT19937
 ###
-### Normal algo vs IS 
+### Normal algo vs IS forrandomized Halton sequence
 
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150958118-9ef0bee0-123c-4cde-81df-2d491d2a8a46.PNG)
 
