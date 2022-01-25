@@ -19,7 +19,7 @@
 ## - Compute estimate of the optimal IS parameters with N/100 (M=100000) using a stepwise constant confidence level
 ## - Estimate VaR & CVaR with those paramters with M iterations
 
-![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150955943-eef14992-2d68-4e1d-9c53-cb2fc3b20d3d.PNG)
+![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150958118-9ef0bee0-123c-4cde-81df-2d491d2a8a46.PNG)
 
 ## Calculation for a 1 Put option portfolio
 
