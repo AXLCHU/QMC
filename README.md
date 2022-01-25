@@ -8,9 +8,14 @@
 - Add Imporance Sampling procedure and adaptive confidence level
 
 ### Results:
-- Better coverage for QRNG vs PRNG
-- Variance reduction when using QRNG vs PRNG - depends on the sampling method
-- (Huge) Variance reduction ratio when adding Importance Sampling procedure - in particular for high confidence level
+
+- Variance reduction when using QRNG vs PRNG - Initial algo :
+
+![QMC_VaR_5](https://user-images.githubusercontent.com/56386159/150991822-d6465847-2b43-4814-9c77-1a72efd961d7.PNG)
+
+
+- Huge variance reduction when adding Importance Sampling & adaptive confidence level procedure
+(in particular for high confidence level)
 
 ### Example:
 
