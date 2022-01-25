@@ -29,6 +29,37 @@ double gaussian_box_muller() {
 }
 
 
+//BM with Halton
+void BM_gauss_low_discrepency(vector<double>& X, double& dim) {
+	double rand1 = 0; double rand2 = 0;
+	double x = 0.0; double y = 0.0;
+	double euclid_sq = 0.0;
+
+	unsigned seed = 1234;
+	std::mt19937 mt1(seed);
+
+	for (int i = 0; i < X.size(); i++) {
+	
+	do {
+		int MT1 = mt1(); int MTT1 = abs(MT1);
+		int MT2 = mt1(); int MTT2 = abs(MT2);
+
+		rand1 = Halton_seq(MTT1, 3);
+		rand2 = Halton_seq(MTT2, 3);
+
+		x = 2.0 * rand1;
+		y = 2.0 * rand2;
+		euclid_sq = x * x + y * y;
+	} 
+	while (euclid_sq >= 1.0);
+
+	X[i] = x * sqrt(-2 * log(euclid_sq) / euclid_sq);
+
+	}
+}
+
+
+
 // Acceptance-rejection method to generate SND
 void gauss2(vector<double>& X) {
 

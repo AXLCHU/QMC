@@ -7,6 +7,8 @@
 #include <algorithm>
 #include "Sampling.h"
 
+using namespace std;
+
 // GBM model
 
 void GBM_paths(std::vector<double>& spot_prices, const double& r, const double& v, const double& T) { 
@@ -20,6 +22,31 @@ void GBM_paths(std::vector<double>& spot_prices, const double& r, const double& 
     spot_prices[i] = spot_prices[i-1] * drift * exp(vol*gauss_bm);
   }
 }
+
+
+void generate_Loss(vector<double>& Loss, vector<double>& spot_prices, const double& r, const double& v, const double& T,
+    const double& K) {
+
+    double dt = T / static_cast<double>(spot_prices.size());
+    double drift = exp(dt * (r - 0.5 * v * v));
+    double vol = sqrt(v * v * dt);
+    double N = spot_prices.size();
+    double dim = Loss.size();
+    
+    for (int n = 0; n < dim; n++) {
+        
+        for (int k = 1; k < N; k++) {
+
+            double gauss_bm = gaussian_box_muller(); //
+
+            spot_prices[k] = spot_prices[k - 1] * drift * exp(vol * gauss_bm);
+        }
+
+        Loss[n] = std::max(K - spot_prices[N - 1], 0.0) - exp(r * T) * BSM_Put(spot_prices[0], r, v, T, K);
+    }
+  
+}
+
 
 
 // Heston model
