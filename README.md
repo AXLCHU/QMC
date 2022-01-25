@@ -21,7 +21,7 @@
 
 ### Example for a 1 Put option portfolio:
 
-- Using randomized Sobol sequence & GBM for underlying
+- Using randomized Sobol sequence & GBM for underlying asset
 
 ![QMC_VaR_4](https://user-images.githubusercontent.com/56386159/150955987-9eacbcba-af3c-4c61-9538-2f87f913871f.PNG)
 
