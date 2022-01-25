@@ -21,9 +21,11 @@
 
 ### Calculation for a 1 Put option portfolio with underlying following a GBM:
 
-![QMC_VaR_3](https://user-images.githubusercontent.com/56386159/150955969-1aaf15e6-ce89-450e-84da-17f4557202ee.PNG)
-
-
-### Variance reduction for IS procedure using Sobol sequence:
+- Using Sobol sequence & GBM
 
 ![QMC_VaR_4](https://user-images.githubusercontent.com/56386159/150955987-9eacbcba-af3c-4c61-9538-2f87f913871f.PNG)
+
+
+### Variance Reduction ratio
+
+### References
