@@ -7,14 +7,14 @@
 
 ### Initial algorithm:
 
-- Variance reduction when using randomized Halton & Sobol sequences vs MT19937 
+- Variance reduction when using randomized Halton & Sobol sequences vs PRNG 
 
 ![QMC_VaR_5](https://user-images.githubusercontent.com/56386159/150991822-d6465847-2b43-4814-9c77-1a72efd961d7.PNG)
 
 
 ### Initial algo vs IS procedure with randomized Halton sequence:
 
-- Huge variance reduction when adding Importance Sampling & stepwise constant confidence level sequence converging to target alpha (in particular for high confidence level)
+- Variance reduction when adding Importance Sampling & adaptive confidence level
 
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150958118-9ef0bee0-123c-4cde-81df-2d491d2a8a46.PNG)
 
@@ -27,5 +27,7 @@
 
 
 ### Variance Reduction ratios:
+
+- High VR ratios: in particular for CVaR & high confidence level
 
 ### References:
