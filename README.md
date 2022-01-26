@@ -26,8 +26,8 @@
 ![QMC_VaR_4](https://user-images.githubusercontent.com/56386159/150955987-9eacbcba-af3c-4c61-9538-2f87f913871f.PNG)
 
 
-### Variance Reduction ratios:
+### Variance Reduction ratios between the 2 procedures:
 
-- Huge VR ratios: in particular for CVaR & high confidence level
+- Huge Variance Reduction ratios: in particular for CVaR & high confidence level
 
-### References:
+
