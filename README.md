@@ -3,7 +3,7 @@
 ### Objectives: 
 - Implementation of low-discrepancy sequences & different sampling methods
 - Implementation of stochastic algorithms converging to VaR & CVaR
-- Add Importance Sampling procedure and adaptive confidence level
+- Add Importance Sampling procedure and adaptive confidence level alpha
 
 ### Initial algorithm:
 
@@ -14,7 +14,7 @@
 
 ### Initial algo vs IS procedure with randomized Halton sequence:
 
-- Huge variance reduction when adding Importance Sampling & stepwise constant confidence level (in particular for high confidence level)
+- Huge variance reduction when adding Importance Sampling & stepwise constant confidence level sequence converging to target alpha (in particular for high confidence level)
 
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150958118-9ef0bee0-123c-4cde-81df-2d491d2a8a46.PNG)
 
