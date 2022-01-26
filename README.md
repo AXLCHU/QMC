@@ -3,7 +3,7 @@
 ### Objectives: 
 - Implementation of low-discrepancy sequences & different sampling methods
 - Implementation of stochastic algorithms converging to VaR & CVaR
-- Add Importance Sampling procedure and adaptive confidence level alpha
+- Add recursive Importance Sampling procedure with adaptive confidence level
 
 ### Initial algorithm:
 
@@ -28,6 +28,6 @@
 
 ### Variance Reduction ratios:
 
-- High VR ratios: in particular for CVaR & high confidence level
+- Huge VR ratios: in particular for CVaR & high confidence level
 
 ### References:
