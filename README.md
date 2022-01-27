@@ -11,7 +11,7 @@
 
 ![QMC_VaR_5](https://user-images.githubusercontent.com/56386159/150991822-d6465847-2b43-4814-9c77-1a72efd961d7.PNG)
 
-
+#
 ### Initial algo vs IS procedure with randomized Halton sequence:
 
 - Variance reduction when adding Importance Sampling & adaptive confidence level
@@ -33,5 +33,5 @@
 #
 ### Example 2 for 10 Calls & 10 Puts on each of 5 uncorrelated GBM assets
 
-- Variance Reduction of 40% for CVaR with nbr of simulaion = 10e5 & confidence level = 0.95
+- Variance Reduction of 40% for CVaR with nbr of simulaion = 10e5 & confidence level = 0.995
 
