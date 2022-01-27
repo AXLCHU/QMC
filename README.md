@@ -5,6 +5,7 @@
 - Implementation of stochastic algorithms converging to VaR & CVaR
 - Add recursive Importance Sampling procedure with adaptive confidence level
 
+#
 ### Initial algorithm:
 
 - Variance reduction when using randomized Halton & Sobol sequences vs PRNG 
