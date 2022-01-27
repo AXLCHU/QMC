@@ -28,6 +28,6 @@
 
 ### Variance Reduction ratios between the 2 procedures:
 
-- Huge Variance Reduction ratios: in particular for CVaR & high confidence level
+- Important Variance Reduction ratios: +100% for CVaR & confidence level close to 1
 
 
