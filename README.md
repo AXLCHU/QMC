@@ -19,7 +19,7 @@
 ![QMC_VaR_2](https://user-images.githubusercontent.com/56386159/150958118-9ef0bee0-123c-4cde-81df-2d491d2a8a46.PNG)
 
 
-### Example for a 1 Put option portfolio:
+### Example 1 for a 1 Put option portfolio:
 
 - Using randomized Sobol sequence & GBM for underlying asset
 
@@ -30,4 +30,4 @@
 
 - Important Variance Reduction ratios: +100% for CVaR & confidence level close to 1
 
-
+### Example 2 for 10 Calls & 10 Puts on each of 5 uncorrelated GBM assets
