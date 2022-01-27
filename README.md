@@ -33,5 +33,7 @@
 #
 ### Example 2 for 10 Calls & 10 Puts on each of 5 uncorrelated GBM assets
 
-- Variance Reduction of 40% for CVaR with nbr of simulaion = 10e5 & confidence level = 0.995
+
+
+- Variance Reduction of 40% for CVaR with nbr of simulaion = 1e5 & confidence level = 0.995
 
