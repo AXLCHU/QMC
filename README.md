@@ -32,3 +32,8 @@
 
 - Variance Reduction of 40% for CVaR with nbr of simulaion = 1E5 & confidence level = 0.995
 
+#
+### References:
+
+- Vincent Lemaire, Gilles Pagès. Unconstrained Recursive Importance Sampling. Annals of Applied Probability, Institute of Mathematical Statistics (IMS), 2010, 20 (3), 1029-1067; http://dx.doi.org/10.1214/09-AAP650. ff10.1214/09-AAP650ff. ffhal-00293466v3
+- Olivier Bardou, Noufel Frikha, G. Pag`es. Computation of VaR and CVaR using stochastic approximations and unconstrained importance sampling.. Monte Carlo Methods and Applications, De Gruyter, 2009, 15 (3), pp.173-210. <10.1515/MCMA.2009.011>. <hal-00348098v5>
