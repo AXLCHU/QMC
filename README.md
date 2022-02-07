@@ -1,4 +1,4 @@
-# Var & CVaR calculations by QMC
+# VaR & CVaR calculations by QMC
 
 ### Objectives: 
 - Implementation of low-discrepancy sequences & different sampling methods
