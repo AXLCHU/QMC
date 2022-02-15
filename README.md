@@ -1,6 +1,7 @@
 # VaR & CVaR calculations by QMC
 
 ### Objectives: 
+
 - Implementation of low-discrepancy sequences & different sampling methods
 - Implementation of stochastic algorithms converging to VaR & CVaR
 - Add recursive Importance Sampling procedure with adaptive confidence level
